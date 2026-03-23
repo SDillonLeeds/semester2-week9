@@ -13,8 +13,16 @@ int main( void ) {
     Stack *stack = createStack();
 
     // push a node
-    push(stack,1);
+    push(stack, 1);
     traverseI(stack->top);  // display the stack
+
+    push(stack, 2);
+    push(stack, 4);
+    push(stack, 3);
+    traverseI(stack->top);  // display the stack
+    Node* popped = pop(stack);
+    printf("Removed: %d\n", popped->data->value);
+    traverseI(stack->top);
 
     // free stack memory
     freeNodes( stack->top );

@@ -50,10 +50,10 @@ void freeNodes( Node *node ) {
 /*
  * iteration-based traversal 
  */
-void traverseI( Node *start ) {  
+void traverseI( Node* start ) {  
 
     for( Node *node=start; node!=NULL; node=node->next ) {
-        printf(" %d",node->data->value);
+        printf(" %d", node->data->value);
     }
     printf("\n");
     return;
@@ -62,9 +62,14 @@ void traverseI( Node *start ) {
 /*
  * while-based traversal
  */
-void traverseW( Node *node ) {  
+void traverseW( Node* node ) {  
 
-    // implementation from task1
+    Node* current = node;
+    do {
+        printf(" %d", current->data->value);
+        current = current->next; //Get next ptr.
+    } while (current!=NULL);
+    printf("\n");
 
     return;
 }
@@ -72,9 +77,15 @@ void traverseW( Node *node ) {
 /*
  * recursive traversal
  */
-void traverseR( Node *node ) {  
+void traverseR( Node* node ) {  
     
-    // implementation from task1
-    
-}
+    printf(" %d", node->data->value);
+    if (node->next != NULL) {
+        //Recurse
+        return traverseR(node->next);
+    }
+    //Base-case.
+    printf("\n");
 
+    return;
+}

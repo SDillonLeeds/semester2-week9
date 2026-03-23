@@ -4,7 +4,7 @@ CFLAGS = -Wall -Wextra
 
 SRC = main.c node.c queue.c
 OBJ = $(SRC:.c=.o)
-EXE = queue
+EXE = queue.x86_64
 
 $(EXE): $(OBJ)
 	$(CC) $(CFLAGS) -o $@ $^

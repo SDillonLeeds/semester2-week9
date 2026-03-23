@@ -17,7 +17,12 @@ int main( void ) {
     second->next = third;
     
     // print the data by following links
+    printf("For:       ");
     traverseI( first );
+    printf("While:     ");
+    traverseW( first );
+    printf("Recursive: ");
+    traverseR( first );
 
     // free all node memory (using traversal)
     freeNodes( first );

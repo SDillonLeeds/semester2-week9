@@ -19,9 +19,9 @@ Data *createData(int val ) {
  */
 Stack *createStack( void ) {
     Stack *new = malloc(sizeof(Stack));
-    new->blockSize = 10;
+    new->blockSize = 8;
     new->size = new->blockSize;
-    new->data = calloc(new->size,sizeof(Data *));  // allocate an initial block for stack storage
+    new->data = calloc(new->size,sizeof(Data*));  // allocate an initial block for stack storage
     new->top = 0;                                  // top set to index 0
     return new;
 }
@@ -31,7 +31,7 @@ Stack *createStack( void ) {
  */
 void enlargeStack( Stack *stack ) {
     stack->size += stack->blockSize;
-    stack->data = realloc(stack->data,stack->size); // allocate a further 'block' to the stack to increase size
+    stack->data = realloc(stack->data, stack->size*sizeof(Data*)); // allocate a further 'block' to the stack to increase size
     return;
 }
 
@@ -43,8 +43,7 @@ void push( Stack *stack, Data *new ) {
     if( stack->top+1 == stack->size ) // reallocate if we have reached max size
         enlargeStack( stack );
 
-    stack->data[stack->top] = new;
-    stack->top++;
+    stack->data[stack->top++] = new;
 
     return;
 }
@@ -57,8 +56,7 @@ Data *pop( Stack *stack ) {
     if( stack->top == 0 )  // check for empty stack
         return NULL;
 
-    Data *new = stack->data[stack->top];
-    stack->top--;
+    Data *new = stack->data[stack->top--];
 
     return new;
 }

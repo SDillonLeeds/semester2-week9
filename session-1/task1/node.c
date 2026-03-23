@@ -8,8 +8,8 @@
 /*
  * create Data item
  */
-Data *createData( int val ) {
-    Data *new = malloc( sizeof(Data) );
+Data* createData( int val ) {
+    Data* new = malloc( sizeof(Data) );
     new->value = val;
     return new;
 }
@@ -17,8 +17,8 @@ Data *createData( int val ) {
 /*
  * create Node item
  */
-Node *createNode( Data *data ) {
-    Node *new = malloc( sizeof(Node) );
+Node* createNode( Data* data ) {
+    Node* new = malloc( sizeof(Node) );
     new->data = data;
     new->next = NULL;
     return new;
@@ -27,7 +27,7 @@ Node *createNode( Data *data ) {
 /*
  * free a Node and the attached Data
  */
-void freeNode( Node *node ) {
+void freeNode( Node* node ) {
     if( node != NULL ) {
         free(node->data);         // free Data first
         free(node);               // then the Node
@@ -38,9 +38,9 @@ void freeNode( Node *node ) {
 /*
  * free all nodes in the linked structure
  */
-void freeNodes( Node *node ) {
+void freeNodes( Node* node ) {
     while( node!=NULL ) {
-        Node *next=node->next;
+        Node* next=node->next;
         freeNode(node);         // note that we have to retain a pointer to the next node before free'ing
         node=next;
     }
@@ -50,10 +50,10 @@ void freeNodes( Node *node ) {
 /*
  * iteration-based traversal 
  */
-void traverseI( Node *start ) {  
+void traverseI( Node* start ) {  
 
-    for( Node *node=start; node!=NULL; node=node->next ) {
-        printf(" %d",node->data->value);
+    for( Node* node=start; node!=NULL; node=node->next ) {
+        printf(" %d", node->data->value);
     }
     printf("\n");
     return;
@@ -62,20 +62,31 @@ void traverseI( Node *start ) {
 /*
  * while-based traversal
  */
-void traverseW( Node *node ) {  
+void traverseW( Node* node ) {  
 
-    // your implementation
-    
+    Node* current = node;
+    do {
+        printf(" %d", current->data->value);
+        current = current->next; //Get next ptr.
+    } while (current!=NULL);
+    printf("\n");
+
     return;
 }
 
 /*
  * recursive traversal
  */
-void traverseR( Node *node ) {  
+void traverseR( Node* node ) {  
     
-    // remember the golden rules
-    // base case, recursive call, approach the base case
-    
+    printf(" %d", node->data->value);
+    if (node->next != NULL) {
+        //Recurse
+        return traverseR(node->next);
+    }
+    //Base-case.
+    printf("\n");
+
+    return;
 }
 

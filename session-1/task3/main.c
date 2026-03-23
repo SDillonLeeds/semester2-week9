@@ -11,7 +11,12 @@ int main( void ) {
 
     // push() - add some data to the stack
     push(stack,createData(1));
-    displayStack (stack);
+    displayStack(stack);
+    for (int i=0; stack->top<stack->size-1; i++) {push(stack, createData(i));}
+    displayStack(stack);
+    enlargeStack(stack);
+    for (int i=0; stack->top<stack->size-1; i++) {push(stack, createData(2*i));}
+    displayStack(stack);
 
     // free stack dynamic memory
     freeStack( stack );

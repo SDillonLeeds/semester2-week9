@@ -23,6 +23,7 @@ Traversal operations are now a simple for-loop between back and front indices
 
 ## Tasks
 
+
 ### 1. Implement the queue
 
 - The array-based stack can be used as a starting point
